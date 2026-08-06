@@ -4,10 +4,9 @@ import { getFirestore } from "firebase/firestore";
 import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAZf9nIjedLerNp-S_hH-M2L7CzAbsHyH0",
+  apiKey: "คีย์เดิม",
   authDomain: "our-little-space-7cd8a.firebaseapp.com",
 
-  // เปลี่ยนข้อความนี้เป็น URL จริงจากหน้า Realtime Database
   databaseURL:
     "https://our-little-space-7cd8a-default-rtdb.asia-southeast1.firebasedatabase.app/",
 
