@@ -1,0 +1,631 @@
+@import url("https://fonts.googleapis.com/css2?family=Mali:wght@400;500;600;700&family=Prompt:wght@300;400;500;600&display=swap");
+
+.memories-page {
+  min-height: 100vh;
+  padding: 35px clamp(18px, 5vw, 80px) 80px;
+  position: relative;
+  overflow: hidden;
+  color: #68384e;
+  font-family: "Prompt", sans-serif;
+  background:
+    radial-gradient(
+      circle at 10% 8%,
+      rgba(255, 255, 255, 0.96),
+      transparent 24%
+    ),
+    radial-gradient(
+      circle at 92% 17%,
+      rgba(255, 193, 218, 0.7),
+      transparent 27%
+    ),
+    linear-gradient(135deg, #fff9fc, #ffe3ef 52%, #fff7fa);
+}
+
+.memories-header {
+  width: min(1150px, 100%);
+  margin: 0 auto 30px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.memories-heading {
+  text-align: center;
+}
+
+.memories-heading p {
+  margin: 0 0 6px;
+  color: #e16b98;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+}
+
+.memories-heading h1 {
+  margin: 0;
+  color: #d84982;
+  font: 700 clamp(30px, 4vw, 46px) "Mali", cursive;
+}
+
+.memories-heading span {
+  display: block;
+  margin-top: 7px;
+  color: #9c7082;
+}
+
+.back-button,
+.add-memory-button {
+  width: max-content;
+  padding: 12px 18px;
+  border: 1px solid #ffc7dc;
+  border-radius: 16px;
+  color: #d84982;
+  background: rgba(255, 255, 255, 0.82);
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.add-memory-button {
+  justify-self: end;
+  border: 0;
+  color: white;
+  font-weight: 600;
+  background: linear-gradient(135deg, #ff8eb8, #ff5698);
+  box-shadow: 0 12px 28px rgba(255, 86, 152, 0.25);
+}
+
+.back-button:hover,
+.add-memory-button:hover {
+  transform: translateY(-2px);
+}
+
+.memory-form-card {
+  width: min(900px, 100%);
+  margin: 0 auto 32px;
+  padding: 30px;
+  position: relative;
+  z-index: 2;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 20px 55px rgba(190, 76, 120, 0.16);
+  backdrop-filter: blur(18px);
+}
+
+.form-title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 24px;
+}
+
+.form-title > span {
+  width: 60px;
+  height: 60px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 20px;
+  font-size: 28px;
+  background: #ffe6ef;
+}
+
+.form-title h2 {
+  margin: 0;
+  color: #cd4b7d;
+  font: 700 25px "Mali", cursive;
+}
+
+.form-title p {
+  margin: 4px 0 0;
+  color: #a47687;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 0.6fr;
+  gap: 15px;
+}
+
+.memory-input-group {
+  margin-bottom: 16px;
+}
+
+.memory-input-group label {
+  display: block;
+  margin: 0 0 7px 5px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.memory-input-group input,
+.memory-input-group textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1.5px solid #ffd0e1;
+  border-radius: 16px;
+  outline: none;
+  color: #68384e;
+  font: inherit;
+  background: rgba(255, 255, 255, 0.94);
+  transition: 0.2s ease;
+}
+
+.memory-input-group textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.memory-input-group input:focus,
+.memory-input-group textarea:focus {
+  border-color: #ff619f;
+  box-shadow: 0 0 0 4px rgba(255, 97, 159, 0.11);
+}
+
+.memory-form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.memory-error,
+.page-error {
+  color: #d94174;
+  font-size: 13px;
+}
+
+.page-error {
+  width: min(1150px, 100%);
+  margin: 0 auto 15px;
+  text-align: center;
+}
+
+.save-memory-button {
+  min-width: 210px;
+  padding: 14px 20px;
+  border: 0;
+  border-radius: 17px;
+  color: white;
+  font-weight: 600;
+  background: linear-gradient(135deg, #ff8eb8, #ff5597);
+  box-shadow: 0 13px 28px rgba(255, 85, 151, 0.26);
+  cursor: pointer;
+}
+
+.save-memory-button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.memories-content {
+  width: min(1150px, 100%);
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.memories-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.memory-card {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 18px 45px rgba(183, 73, 116, 0.14);
+  transition: 0.25s ease;
+}
+
+.memory-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 55px rgba(183, 73, 116, 0.2);
+}
+
+.memory-image-wrapper {
+  width: 100%;
+  padding: 0;
+  display: block;
+  overflow: hidden;
+  border: 0;
+  background: #f7e9ef;
+  cursor: zoom-in;
+}
+
+.landscape-card .memory-image-wrapper {
+  aspect-ratio: 16 / 10;
+}
+
+.portrait-card .memory-image-wrapper {
+  aspect-ratio: 4 / 5;
+}
+
+.memory-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.memory-card:hover .memory-image {
+  transform: scale(1.03);
+}
+
+.memory-placeholder {
+  min-height: 260px;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  color: #d35b8a;
+  background:
+    radial-gradient(circle at 40% 30%, #fff, transparent 25%),
+    linear-gradient(135deg, #ffe8f1, #ffd6e6);
+}
+
+.memory-placeholder span {
+  font-size: 54px;
+}
+
+.memory-placeholder p {
+  margin: 8px 0 0;
+  font: 600 20px "Mali", cursive;
+}
+
+.memory-card-content {
+  padding: 22px;
+}
+
+.memory-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.memory-date {
+  color: #df6b98;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.delete-memory-button {
+  width: 33px;
+  height: 33px;
+  border: 0;
+  border-radius: 11px;
+  color: #ce4f7e;
+  font-size: 20px;
+  background: #fff0f5;
+  cursor: pointer;
+}
+
+.memory-card-content h2 {
+  margin: 12px 0 8px;
+  color: #c84979;
+  font: 700 clamp(22px, 3vw, 29px) "Mali", cursive;
+}
+
+.memory-description {
+  margin: 0;
+  color: #80586a;
+  line-height: 1.8;
+  white-space: pre-wrap;
+}
+
+.memory-owner {
+  margin-top: 18px;
+  padding-top: 13px;
+  border-top: 1px dashed #f3c9d9;
+  color: #a9788a;
+  font-size: 12px;
+}
+
+.empty-memories {
+  min-height: 380px;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 18px 45px rgba(183, 73, 116, 0.12);
+}
+
+.empty-memories > div {
+  font-size: 58px;
+}
+
+.empty-memories h2 {
+  margin: 12px 0 5px;
+  color: #ca4b7b;
+  font: 700 26px "Mali", cursive;
+}
+
+.empty-memories p {
+  margin: 0;
+  color: #a47788;
+}
+
+.hidden-file-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.memory-file-picker {
+  min-height: 105px;
+  padding: 20px;
+  display: flex !important;
+  align-items: center;
+  gap: 16px;
+  border: 2px dashed #f3b8cf;
+  border-radius: 20px;
+  background: rgba(255, 247, 250, 0.85);
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.memory-file-picker:hover {
+  border-color: #ff6da6;
+  background: #fff0f6;
+  transform: translateY(-2px);
+}
+
+.memory-file-picker.disabled {
+  opacity: 0.6;
+  cursor: wait;
+  pointer-events: none;
+}
+
+.file-picker-icon {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 18px;
+  font-size: 28px;
+  background: #ffe1ed;
+}
+
+.memory-file-picker strong,
+.memory-file-picker small {
+  display: block;
+}
+
+.memory-file-picker strong {
+  color: #ca4c7c;
+  font-size: 15px;
+  word-break: break-word;
+}
+
+.memory-file-picker small {
+  margin-top: 4px;
+  color: #a87a8b;
+  font-size: 12px;
+}
+
+.memory-preview {
+  margin: 0 0 20px;
+  padding: 12px;
+  overflow: hidden;
+  border: 1px solid #ffd3e3;
+  border-radius: 22px;
+  background: #fff7fa;
+}
+
+.memory-preview img {
+  width: 100%;
+  max-height: 440px;
+  display: block;
+  border-radius: 15px;
+  object-fit: contain;
+  background: #f7edf1;
+}
+
+.remove-preview-button {
+  margin: 10px auto 0;
+  padding: 9px 15px;
+  display: block;
+  border: 0;
+  border-radius: 12px;
+  color: #c64677;
+  background: #ffe5ef;
+  cursor: pointer;
+}
+
+.upload-progress-area {
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 17px;
+  background: #fff0f6;
+}
+
+.upload-progress-text {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #c64b79;
+  font-size: 13px;
+}
+
+.upload-progress-track {
+  height: 10px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #f8cadc;
+}
+
+.upload-progress-bar {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #ff8eb8, #ff5597);
+  transition: width 0.2s ease;
+}
+
+.memory-lightbox {
+  padding: 25px;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  background: rgba(48, 22, 34, 0.82);
+  backdrop-filter: blur(10px);
+}
+
+.lightbox-content {
+  width: min(1050px, 100%);
+  max-height: 90vh;
+  overflow: auto;
+  border-radius: 25px;
+  background: white;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.35);
+}
+
+.lightbox-content img {
+  width: 100%;
+  max-height: 72vh;
+  display: block;
+  object-fit: contain;
+  background: #21171c;
+}
+
+.lightbox-information {
+  padding: 22px;
+}
+
+.lightbox-information h2 {
+  margin: 0 0 5px;
+  color: #cb4d7d;
+  font: 700 25px "Mali", cursive;
+}
+
+.lightbox-information p {
+  margin: 0 0 8px;
+  color: #df6b98;
+}
+
+.lightbox-information span {
+  color: #80586a;
+  line-height: 1.75;
+  white-space: pre-wrap;
+}
+
+.close-lightbox-button {
+  width: 46px;
+  height: 46px;
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  z-index: 1001;
+  border: 0;
+  border-radius: 50%;
+  color: #c74677;
+  font-size: 30px;
+  background: white;
+  cursor: pointer;
+}
+
+.memory-decoration {
+  position: fixed;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.5;
+  animation: memoryFloat 5s ease-in-out infinite;
+}
+
+.memory-flower-one {
+  top: 17%;
+  left: 2%;
+  font-size: 41px;
+}
+
+.memory-flower-two {
+  right: 3%;
+  bottom: 8%;
+  font-size: 44px;
+  animation-delay: -2s;
+}
+
+.memory-heart {
+  top: 11%;
+  right: 4%;
+  color: #ff6ba5;
+  font-size: 64px;
+  animation-delay: -3s;
+}
+
+@keyframes memoryFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-5deg);
+  }
+
+  50% {
+    transform: translateY(-17px) rotate(7deg);
+  }
+}
+
+@media (max-width: 760px) {
+  .memories-page {
+    padding: 24px 15px 55px;
+  }
+
+  .memories-header {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .memories-heading {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  .back-button {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .add-memory-button {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .form-grid,
+  .memories-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .memory-form-card {
+    padding: 23px 18px;
+  }
+
+  .memory-form-footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .save-memory-button {
+    width: 100%;
+  }
+
+  .memory-lightbox {
+    padding: 15px;
+  }
+
+  .close-lightbox-button {
+    top: 12px;
+    right: 12px;
+  }
+}

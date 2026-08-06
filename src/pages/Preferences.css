@@ -1,0 +1,438 @@
+@import url("https://fonts.googleapis.com/css2?family=Mali:wght@400;500;600;700&family=Prompt:wght@300;400;500;600&display=swap");
+
+.preferences-page {
+  min-height: 100vh;
+  padding: 35px clamp(18px, 5vw, 80px) 80px;
+  position: relative;
+  overflow: hidden;
+  color: #68384e;
+  font-family: "Prompt", sans-serif;
+  background:
+    radial-gradient(
+      circle at 10% 8%,
+      rgba(255, 255, 255, 0.96),
+      transparent 24%
+    ),
+    radial-gradient(
+      circle at 92% 17%,
+      rgba(255, 193, 218, 0.7),
+      transparent 27%
+    ),
+    linear-gradient(135deg, #fff9fc, #ffe3ef 52%, #fff7fa);
+}
+
+.preferences-header {
+  width: min(1150px, 100%);
+  margin: 0 auto 30px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.preferences-heading {
+  text-align: center;
+}
+
+.preferences-heading p {
+  margin: 0 0 6px;
+  color: #e16b98;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+}
+
+.preferences-heading h1 {
+  margin: 0;
+  color: #d84982;
+  font: 700 clamp(29px, 4vw, 45px) "Mali", cursive;
+}
+
+.preferences-heading span {
+  display: block;
+  margin-top: 7px;
+  color: #9c7082;
+}
+
+.preferences-back-button,
+.add-preference-button {
+  width: max-content;
+  padding: 12px 18px;
+  border: 1px solid #ffc7dc;
+  border-radius: 16px;
+  color: #d84982;
+  background: rgba(255, 255, 255, 0.82);
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.add-preference-button {
+  justify-self: end;
+  border: 0;
+  color: white;
+  font-weight: 600;
+  background: linear-gradient(135deg, #ff8eb8, #ff5698);
+  box-shadow: 0 12px 28px rgba(255, 86, 152, 0.25);
+}
+
+.preferences-back-button:hover,
+.add-preference-button:hover {
+  transform: translateY(-2px);
+}
+
+.preference-form-card {
+  width: min(900px, 100%);
+  margin: 0 auto 30px;
+  padding: 30px;
+  position: relative;
+  z-index: 2;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 20px 55px rgba(190, 76, 120, 0.16);
+  backdrop-filter: blur(18px);
+}
+
+.preference-form-heading {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 24px;
+}
+
+.preference-form-heading > span {
+  width: 60px;
+  height: 60px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 20px;
+  font-size: 28px;
+  background: #ffe6ef;
+}
+
+.preference-form-heading h2 {
+  margin: 0;
+  color: #cd4b7d;
+  font: 700 25px "Mali", cursive;
+}
+
+.preference-form-heading p {
+  margin: 4px 0 0;
+  color: #a47687;
+}
+
+.preference-form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.preference-input-group {
+  margin-bottom: 16px;
+}
+
+.preference-input-group label {
+  display: block;
+  margin: 0 0 7px 5px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.preference-input-group input,
+.preference-input-group textarea,
+.preference-input-group select {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1.5px solid #ffd0e1;
+  border-radius: 16px;
+  outline: none;
+  color: #68384e;
+  font: inherit;
+  background: rgba(255, 255, 255, 0.94);
+  transition: 0.2s ease;
+}
+
+.preference-input-group textarea {
+  resize: vertical;
+}
+
+.preference-input-group input:focus,
+.preference-input-group textarea:focus,
+.preference-input-group select:focus {
+  border-color: #ff619f;
+  box-shadow: 0 0 0 4px rgba(255, 97, 159, 0.11);
+}
+
+.preference-form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.preference-error,
+.preference-page-error {
+  color: #d94174;
+  font-size: 13px;
+}
+
+.preference-page-error {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.save-preference-button {
+  min-width: 190px;
+  padding: 14px 20px;
+  border: 0;
+  border-radius: 17px;
+  color: white;
+  font-weight: 600;
+  background: linear-gradient(135deg, #ff8eb8, #ff5597);
+  box-shadow: 0 13px 28px rgba(255, 85, 151, 0.26);
+  cursor: pointer;
+}
+
+.save-preference-button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.person-selector {
+  width: min(550px, 100%);
+  margin: 0 auto 25px;
+  padding: 8px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  position: relative;
+  z-index: 2;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  border-radius: 21px;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.person-button {
+  padding: 13px;
+  border: 0;
+  border-radius: 15px;
+  color: #a06c80;
+  background: transparent;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.person-button span {
+  margin-right: 7px;
+}
+
+.person-button.active {
+  color: white;
+  background: linear-gradient(135deg, #ff91b9, #ff5798);
+  box-shadow: 0 10px 24px rgba(255, 87, 152, 0.24);
+}
+
+.preferences-content {
+  width: min(1150px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: start;
+  gap: 22px;
+  position: relative;
+  z-index: 2;
+}
+
+.preference-column {
+  padding: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  border-radius: 27px;
+  background: rgba(255, 255, 255, 0.73);
+  box-shadow: 0 17px 45px rgba(183, 73, 116, 0.13);
+  backdrop-filter: blur(16px);
+}
+
+.column-heading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.column-heading > span {
+  width: 55px;
+  height: 55px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 18px;
+  font-size: 26px;
+  background: #ffe8f0;
+}
+
+.dislikes-column .column-heading > span {
+  background: #f4efff;
+}
+
+.column-heading h2 {
+  margin: 0;
+  color: #ca4b7b;
+  font: 700 21px "Mali", cursive;
+}
+
+.column-heading p {
+  margin: 3px 0 0;
+  color: #a77a8b;
+  font-size: 12px;
+}
+
+.preference-list {
+  display: grid;
+  gap: 12px;
+}
+
+.preference-card {
+  padding: 18px;
+  border: 1px solid #f7d5e2;
+  border-radius: 19px;
+  background: rgba(255, 250, 252, 0.9);
+}
+
+.preference-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.preference-category {
+  padding: 5px 10px;
+  border-radius: 999px;
+  color: #d65384;
+  background: #ffeaf2;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.preference-delete {
+  width: 29px;
+  height: 29px;
+  border: 0;
+  border-radius: 10px;
+  color: #ce4f7e;
+  font-size: 19px;
+  background: #fff0f5;
+  cursor: pointer;
+}
+
+.preference-card h3 {
+  margin: 11px 0 5px;
+  color: #bd4774;
+  font: 700 19px "Mali", cursive;
+}
+
+.preference-card p {
+  margin: 0 0 10px;
+  color: #80586a;
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+.preference-card small {
+  color: #a77b8c;
+}
+
+.empty-preference {
+  padding: 45px 15px;
+  border: 1px dashed #efbfd2;
+  border-radius: 19px;
+  color: #a97d8e;
+  text-align: center;
+  background: rgba(255, 247, 250, 0.7);
+}
+
+.preferences-decoration {
+  position: fixed;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.5;
+  animation: preferenceFloat 5s ease-in-out infinite;
+}
+
+.preference-flower-one {
+  top: 17%;
+  left: 2%;
+  font-size: 41px;
+}
+
+.preference-flower-two {
+  right: 3%;
+  bottom: 8%;
+  font-size: 44px;
+  animation-delay: -2s;
+}
+
+.preference-heart {
+  top: 11%;
+  right: 4%;
+  color: #ff6ba5;
+  font-size: 64px;
+  animation-delay: -3s;
+}
+
+@keyframes preferenceFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-5deg);
+  }
+
+  50% {
+    transform: translateY(-17px) rotate(7deg);
+  }
+}
+
+@media (max-width: 760px) {
+  .preferences-page {
+    padding: 24px 15px 55px;
+  }
+
+  .preferences-header {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .preferences-heading {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  .preferences-back-button {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .add-preference-button {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .preference-form-grid,
+  .preferences-content {
+    grid-template-columns: 1fr;
+  }
+
+  .preference-form-card {
+    padding: 23px 18px;
+  }
+
+  .preference-form-footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .save-preference-button {
+    width: 100%;
+  }
+}
